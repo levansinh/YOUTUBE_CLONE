@@ -1,0 +1,33 @@
+.navbar {
+  background-color: $main-bg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 0 16px;
+  @include flex(center, space-between);
+
+  &__first {
+    @include flex(center, flex-start);
+    &__toogle-btn {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    &__logo {
+      @include flex(center, flex-start);
+      //   pointer-events: none;
+      cursor: pointer;
+      img {
+        height: 28px;
+      }
+    }
+  }
+
+  &__second {
+   
+   &__search {
+    @include flex(center,space-between);
+   }
+  }
+}
