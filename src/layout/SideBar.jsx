@@ -1,24 +1,34 @@
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faFilm } from "@fortawesome/free-solid-svg-icons";
+
 function SideBar() {
+const {pathname} = useLocation()
   const mainLinks = [
     {
       icon: <FontAwesomeIcon icon={faHouse} className="text-xl" />,
       name: "Home",
+      path:'/'
     },
     {
       icon: <FontAwesomeIcon icon={faFilm} className="text-xl" />,
       name: "Explore",
+      path:'/explore'
     },
     {
       icon: <FontAwesomeIcon icon={faFilm} className="text-xl" />,
       name: "Shorts",
+      path:'/shorts'
     },
     {
       icon: <FontAwesomeIcon icon={faFilm} className="text-xl" />,
       name: "Subscriptions",
+      path:'/subscriptions'
     },
   ];
+  console.log(pathname);
+  const activeNavbar = mainLinks.findIndex((e) => e.path === pathname);
 
   const secondaryLinks = [
     {
@@ -99,50 +109,49 @@ function SideBar() {
       "Test new features",
     ],
   ];
-
   return (
-    <div className="w-2/12  px-5 overflow-auto pb-8 sidebar ">
-      <ul className="flex flex-col border-b-2 border-gray-700">
+    <div className="w-full  px-5 overflow-auto pb-8 sidebar ">
+      <ul className="flex flex-col border-b-2 border-zinc-200">
         {mainLinks.map(({ icon, name }, index) => (
-          <li key={index} className="pl-6 py-3 hover:bg-gray-200">
-            <a href="#" className="text-sm gap-5 items-center">
+          <li key={index} className={`pl-6 py-3 cursor-pointer hover:bg-zinc-100 rounded-xl ${activeNavbar === index ? 'bg-zinc-100 rounded-xl ': "" } `}>
+            <Link href="#" className="text-sm gap-5 items-center">
               {icon}
               <span className="text-sm pl-2 tracking-wider">{name}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
-      <ul className="flex flex-col border-b-2 border-gray-700">
+      <ul className="flex flex-col border-b-2 border-zinc-200">
         {secondaryLinks.map(({ icon, name }, index) => (
           <li key={index} className="pl-6 py-3 hover:bg-gray-200">
-            <a href="#" className="text-sm gap-5 items-center">
+            <Link href="#" className="text-sm gap-5 items-center">
               {icon}
               <span className="text-sm pl-2 tracking-wider">{name}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
-      <ul className="flex flex-col border-b-2 border-gray-700">
+      <ul className="flex flex-col border-b-2 border-zinc-200">
         {subscriptionLinks.map(({ icon, name }, index) => (
           <li key={index} className="pl-6 py-3 hover:bg-gray-200">
-            <a href="#" className="text-sm gap-5 items-center">
+            <Link href="#" className="text-sm gap-5 items-center">
               {icon}
               <span className="text-sm pl-2 tracking-wider">{name}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
-      <ul className="flex flex-col border-b-2 border-gray-700">
+      <ul className="flex flex-col border-b-2 border-zinc-200">
         {helpLinks.map(({ icon, name }, index) => (
           <li key={index} className="pl-6 py-3 hover:bg-gray-200">
-            <a href="#" className="text-sm gap-5 items-center">
+            <Link href="#" className="text-sm gap-5 items-center">
               {icon}
               <span className="text-sm pl-2 tracking-wider">{name}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
-      <ul className="flex flex-col border-b-2 border-gray-700">
+      <ul className="flex flex-col border-b-2 border-zinc-200">
         {textLinks[1].map((name) => {
           return <li key={name}>{name}</li>;
         })}
@@ -152,7 +161,6 @@ function SideBar() {
       <p className="px-4 pt-3 text-sm text-zinc-400">
         This clone is for educational purpose only.
       </p>
-      
     </div>
   );
 }

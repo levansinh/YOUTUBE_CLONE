@@ -9,7 +9,7 @@ import {
   faCamera,
   faBell,
 } from "@fortawesome/free-solid-svg-icons";
-function Navbar() {
+function Navbar({active,setActive}) {
   return (
     <div className="navbar">
       <div className="navbar__first">

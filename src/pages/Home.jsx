@@ -12,6 +12,7 @@ function Home() {
         }
         fetchApi()
     },[])
+    console.log(video);
     return ( 
       <Helmet title='Trang chủ'>
       <div className="grid w-full gap-y-14 gap-x-8 grid-cols-3 p-8">
